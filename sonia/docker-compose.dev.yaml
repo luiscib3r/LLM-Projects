@@ -6,6 +6,8 @@ services:
     restart: always
     env_file:
       - .env
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     environment:
       - PGDATA=/var/lib/postgresql/data/pgdata
       - POSTGRES_PORT=${POSTGRES_PORT}
@@ -15,22 +17,3 @@ services:
 
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
-
-  sonia:
-    image: sonia:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    env_file:
-      - .env
-    ports:
-      - ${SONIA_PORT}:${SONIA_PORT}
-    environment:
-      - PORT=${SONIA_PORT}
-      - DATABASE_URL=${DOCKER_DATABASE_URL}
-    depends_on:
-      - db
-
-volumes:
-  pgdata:

@@ -10,11 +10,6 @@ export const Sidebar = async () => {
     return newChat;
   };
 
-  const getChatsAction = async () => {
-    "use server";
-    return getChats();
-  };
-
   const updateChatsAction = async (data: { id: string; title: string }) => {
     "use server";
     const updatedChat = await updateChat(data);
@@ -28,7 +23,7 @@ export const Sidebar = async () => {
     return deletedChat;
   };
 
-  const chats = await getChatsAction();
+  const chats = await getChats();
 
   return (
     <ChatList

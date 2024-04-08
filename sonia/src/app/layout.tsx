@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     "Talk with Sonia, an AI assistant that helps you with your daily tasks.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: Readonly<{

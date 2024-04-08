@@ -1,5 +1,17 @@
 # Sonia
 
+## This project use `pnpm` as package manager
+
+```bash
+corepack enable pnpm
+```
+
+## Install dependencies
+
+```bash
+pnpm install
+```
+
 ## Setup Database
 
 You can edit `.env` file to change the database connection.
@@ -7,7 +19,7 @@ You can edit `.env` file to change the database connection.
 ### Start local database with docker
 
 ```bash
-docker compose up -d
+docker compose -f docker-compose.dev.yml up -d
 ```
 
 ### Generate prisma client
