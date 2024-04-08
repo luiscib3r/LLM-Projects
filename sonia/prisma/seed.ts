@@ -1,46 +1,79 @@
-import { ApiType, PrismaClient } from '@prisma/client'
+import { ApiType, PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
-  const openai = await prisma.lLMApi.upsert({
-    where: { name: 'OpenAI' },
+  const gpt3 = await prisma.lLMApi.upsert({
+    where: { name: "GPT 3.5" },
     update: {},
     create: {
-      name: 'OpenAI',
-      url: 'https://api.openai.com',
-      model: 'gpt-3.5-turbo',
+      name: "GPT 3.5",
+      url: "https://api.openai.com/v1",
+      model: "gpt-3.5-turbo",
       apiType: ApiType.OPENAI,
     },
-  })
+  });
 
   await prisma.lLMApi.upsert({
-    where: { name: 'Anthropic' },
+    where: { name: "GPT 4" },
     update: {},
     create: {
-      name: 'Anthropic',
-      url: 'https://api.anthropic.com',
-      model: 'claude-3-opus',
+      name: "GPT 4",
+      url: "https://api.openai.com/v1",
+      model: "gpt-4-0125-preview",
+      apiType: ApiType.OPENAI,
+    },
+  });
+
+  await prisma.lLMApi.upsert({
+    where: { name: "Claude Opus" },
+    update: {},
+    create: {
+      name: "Claude Opus",
+      url: "https://api.anthropic.com",
+      model: "claude-3-opus-20240229",
       apiType: ApiType.ANTHROPIC,
     },
-  })
+  });
 
-  await prisma.config.upsert({
-    where: { environment: 'default' },
+  await prisma.lLMApi.upsert({
+    where: { name: "Claude Sonnet" },
     update: {},
     create: {
-      environment: 'default',
-      llmApiId: openai.id,
+      name: "Claude Sonnet",
+      url: "https://api.anthropic.com",
+      model: "claude-3-sonnet-20240229",
+      apiType: ApiType.ANTHROPIC,
     },
-  })
+  });
+
+  await prisma.lLMApi.upsert({
+    where: { name: "Claude Haiku" },
+    update: {},
+    create: {
+      name: "Claude Haiku",
+      url: "https://api.anthropic.com",
+      model: "claude-3-haiku-20240307",
+      apiType: ApiType.ANTHROPIC,
+    },
+  });
+
+  await prisma.config.upsert({
+    where: { environment: "default" },
+    update: {},
+    create: {
+      environment: "default",
+      llmApiId: gpt3.id,
+    },
+  });
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
