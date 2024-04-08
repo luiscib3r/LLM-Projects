@@ -58,6 +58,28 @@ async function main() {
     },
   });
 
+  await prisma.lLMApi.upsert({
+    where: { name: "Mixtral" },
+    update: {},
+    create: {
+      name: "Mixtral",
+      url: "https://api.together.xyz/v1",
+      model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      apiType: ApiType.OPENAI,
+    },
+  });
+
+  await prisma.lLMApi.upsert({
+    where: { name: "Llama 13B" },
+    update: {},
+    create: {
+      name: "Llama 13B",
+      url: "https://api.together.xyz/v1",
+      model: "meta-llama/Llama-2-13b-chat-hf",
+      apiType: ApiType.OPENAI,
+    },
+  });
+
   await prisma.config.upsert({
     where: { environment: "default" },
     update: {},
