@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "sonia"
+		},
+		{
 			"path": "local-rag"
 		}
 	],
@@ -17,6 +20,15 @@
 				"driver": "PostgreSQL",
 				"name": "PgVector",
 				"database": "localrag",
+				"username": "postgres"
+			},
+			{
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 5432,
+				"driver": "PostgreSQL",
+				"name": "Sonia",
+				"database": "sonia",
 				"username": "postgres"
 			}
 		]
