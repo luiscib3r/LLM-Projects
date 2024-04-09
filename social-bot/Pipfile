@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+ipykernel = "*"
+ipywidgets = "*"
+xmltodict = "*"
+pydantic = "*"
+selenium = "*"
+beautifulsoup4 = "*"
+langchain = "*"
+langchain-core = "*"
+langchain-community = "*"
+langchain-anthropic = "*"
+requests-oauthlib = "*"
+linkedin-api = "*"
+langchain-openai = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
+python_full_version = "3.12.2"
