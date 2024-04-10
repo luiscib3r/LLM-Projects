@@ -16,8 +16,8 @@ langchain-core = "*"
 langchain-community = "*"
 langchain-anthropic = "*"
 requests-oauthlib = "*"
-linkedin-api = "*"
 langchain-openai = "*"
+linkedin-api-client = "*"
 
 [dev-packages]
 
