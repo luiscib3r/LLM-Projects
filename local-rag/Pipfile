@@ -12,6 +12,15 @@ langchain-community = "*"
 wikipedia = "*"
 pgvector = "*"
 psycopg2-binary = "*"
+fastapi = "*"
+pydantic = "*"
+pydantic-settings = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+python-multipart = "*"
+pymupdf = "*"
+chardet = "*"
+selenium = "*"
+unstructured = "*"
 
 [dev-packages]
 
