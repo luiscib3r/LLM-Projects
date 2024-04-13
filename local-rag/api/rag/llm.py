@@ -6,7 +6,7 @@ from api.settings import settings
 
 
 def _llm_factory() -> BaseLLM:
-    return Ollama(base_ulr=settings.OLLAMA_SERVER, model=settings.LLM_MODEL)
+    return Ollama(base_url=settings.OLLAMA_SERVER, model=settings.LLM_MODEL)
 
 
 LLMFactory = Annotated[BaseLLM, Depends(_llm_factory)]

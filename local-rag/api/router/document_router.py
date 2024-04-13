@@ -1,5 +1,4 @@
-from fastapi import APIRouter, UploadFile, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi import APIRouter, UploadFile, HTTPException, status
 from api.service.document_service import DocumentServiceFactory
 from pydantic import BaseModel, Field
 
@@ -14,7 +13,7 @@ class StoreDocumentResponse(BaseModel):
     number_of_chunks: int
 
 
-@router.post("")
+@router.post("", status_code=status.HTTP_201_CREATED)
 async def store_document(
     file: UploadFile,
     document_service: DocumentServiceFactory,
@@ -37,7 +36,7 @@ class StoreDocumentFromUrlBody(BaseModel):
     url: str
 
 
-@router.post("/url")
+@router.post("/url", status_code=status.HTTP_201_CREATED)
 async def store_document_from_url(
     body: StoreDocumentFromUrlBody,
     document_service: DocumentServiceFactory,
@@ -99,20 +98,14 @@ async def get_documents_by_ids(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-class GenericResponse(BaseModel):
-    message: str
-
-
-@router.delete("/ids")
+@router.delete("/ids", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_documents_by_ids(
     body: DocumentsIdsBody,
     document_service: DocumentServiceFactory,
-) -> GenericResponse:
+):
     """Delete documents by ids."""
     try:
         await document_service.delete_documents(body.document_ids)
-
-        return GenericResponse(message="Documents deleted")
     except HTTPException as e:
         raise e
     except Exception as e:
