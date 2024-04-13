@@ -63,3 +63,6 @@ I recommend running `docker compose up` to see the logs and check if everything 
 The api container will try to connect to ollama server and pull the necessary models, this can take a while.
 
 Feel free to change the `docker-compose.yml` and `.env` file to use your own models and configurations.
+
+---
+If you found this project helpful and would like to show your support, please consider giving it a ⭐️ on GitHub! Your star will help others discover this repository and contribute to its growth. 🌟
