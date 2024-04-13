@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import Depends, UploadFile
 
-from langchain_core.vectorstores import VectorStore
+from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders.url_selenium import SeleniumURLLoader
 
@@ -10,6 +10,7 @@ from api.rag.vectordb import VectorDbFactory
 from api.service.exceptions import DocumentTypeNotSupported
 from api.tools.pdf_loader import PDFLoader
 from api.tools.text_loader import TextLoader
+from api.tools.vector_store import VectorStore
 
 
 class DocumentService:
@@ -48,6 +49,15 @@ class DocumentService:
         texts = self.splitter.split_documents(documents)
         result = await self.vectordb.aadd_documents(texts)
         return result
+
+    async def get_documents_ids(self):
+        return await self.vectordb.get_all_ids()
+
+    async def get_documents_by_ids(self, ids: list[str]) -> list[Document]:
+        return await self.vectordb.get_documents_by_ids(ids)
+
+    async def delete_documents(self, ids: list[str], collection_only: bool = False):
+        await self.vectordb.delete(ids, collection_only)
 
 
 def _document_service_factory(

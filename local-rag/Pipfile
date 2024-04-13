@@ -21,6 +21,7 @@ pymupdf = "*"
 chardet = "*"
 selenium = "*"
 unstructured = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
