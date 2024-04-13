@@ -14,8 +14,6 @@ def query(question: str, chain: ChainFactory) -> StreamingResponse:
     """Ask a question to the our AI model with RAG."""
     response = chain.stream(question)
 
-    print("response", response)
-
     return StreamingResponse(
         response,
         media_type="text/event-stream",
