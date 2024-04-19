@@ -26,6 +26,7 @@ services:
       - .env
     ports:
       - ${SONIA_PORT}:${SONIA_PORT}
+      - 5555:5555
     environment:
       - PORT=${SONIA_PORT}
       - DATABASE_URL=${DOCKER_DATABASE_URL}
