@@ -19,7 +19,7 @@ You can edit `.env` file to change the database connection.
 ### Start local database with docker
 
 ```bash
-docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.dev.yaml up -d
 ```
 
 ### Generate prisma client
