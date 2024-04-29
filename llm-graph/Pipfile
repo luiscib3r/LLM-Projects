@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pydantic-settings = "*"
+pydantic = "*"
+ipykernel = "*"
+ipywidgets = "*"
+langchain = "*"
+langchain-core = "*"
+langchain-community = "*"
+langchain-groq = "*"
+neo4j = "*"
+pandas = "*"
+langchain-openai = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
+python_full_version = "3.12.2"

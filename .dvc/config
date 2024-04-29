@@ -1,0 +1,4 @@
+[core]
+    remote = llm-graph
+['remote "llm-graph"']
+    url = gdrive://1l8MiTNk2JgO92wrYpIeBzb8vwIRW8iY2
