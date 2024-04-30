@@ -1,3 +1,4 @@
 *.pyc
 .env
 /data
+.env.neo4j
